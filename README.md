@@ -4,9 +4,21 @@
 
 本项目用于完成《第七章 智能应用开发》作业，项目范围保持最小化：单页面、单个知识库、无数据库、无用户系统。
 
+开源仓库：<https://github.com/MimiNuosi/zhixue-assistant>
+
 ## 界面预览
 
 ![智学助手界面](docs/screenshot-desktop.png)
+
+## 作业要求对应
+
+| 作业要求 | 项目实现 |
+| --- | --- |
+| 基于 LangChain 框架 | 使用 LangChain Core、LCEL 提示词链、`ChatOpenAI` 和输出解析器 |
+| 使用在线或离线大模型 | 通过 OpenAI 兼容接口接入 DeepSeek 在线模型 |
+| 开发一款智能应用 | 实现课程资料检索、问答、引用展示和多轮页面交互 |
+| README 文档说明 | 本文档包含功能、架构、配置、运行、测试和安全说明 |
+| 开源仓库链接 | 使用 MIT License，仓库地址见本文顶部 |
 
 ## 功能
 
@@ -73,7 +85,8 @@ LangChain 提示词模板
 Windows PowerShell：
 
 ```powershell
-cd D:\kaiyuan\智能应用开发
+git clone https://github.com/MimiNuosi/zhixue-assistant.git
+cd zhixue-assistant
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
@@ -149,6 +162,8 @@ http://localhost:8501
 ```
 
 测试覆盖知识库加载、文本切分、中文 BM25 检索和上下文格式化。模型调用需要有效 API Key，测试不会消耗在线 API 额度。
+
+当前本地验证结果：`6 passed`，并已使用 DeepSeek API 完成真实问答测试。
 
 ## 安全说明
 
