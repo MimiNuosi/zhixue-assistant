@@ -97,7 +97,7 @@ Copy-Item .env.example .env
 
 ```dotenv
 LLM_API_KEY=your_real_api_key
-LLM_BASE_URL=https://api.deepseek.com/v1
+LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL=deepseek-chat
 ```
 
@@ -107,7 +107,7 @@ LLM_MODEL=deepseek-chat
 
 ```dotenv
 # DeepSeek
-LLM_BASE_URL=https://api.deepseek.com/v1
+LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL=deepseek-chat
 
 # 阿里云百炼兼容模式

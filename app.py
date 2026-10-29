@@ -94,7 +94,7 @@ with st.sidebar:
     ).strip()
     base_url = st.text_input(
         "Base URL",
-        value=os.getenv("LLM_BASE_URL", "https://api.deepseek.com/v1"),
+        value=os.getenv("LLM_BASE_URL", "https://api.deepseek.com"),
         help="填写服务商提供的 OpenAI 兼容接口地址。",
     ).strip()
     model_name = st.text_input(
@@ -155,7 +155,18 @@ if question:
                     }
                 )
             except Exception as exc:
-                error_message = f"模型调用失败：{exc}"
+                error_detail = str(exc)
+                if "Connection error" in error_detail:
+                    error_message = (
+                        "无法连接模型服务。请检查 Base URL、本机网络和代理设置。"
+                        "DeepSeek 的 Base URL 可填写 https://api.deepseek.com。"
+                    )
+                elif "401" in error_detail or "Authentication" in error_detail:
+                    error_message = "模型服务认证失败，请检查 API Key 是否正确以及是否已过期。"
+                elif "404" in error_detail:
+                    error_message = "模型接口地址或模型名称不正确，请对照服务商文档检查配置。"
+                else:
+                    error_message = f"模型调用失败：{error_detail}"
                 st.error(error_message)
                 st.session_state.messages.append(
                     {
